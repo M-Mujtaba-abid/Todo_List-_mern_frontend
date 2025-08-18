@@ -1,8 +1,15 @@
 // src/redux/todoThunk.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
-const API_URL = "http://localhost:8000/api/todo";
+
+// const API_URL =
+//   import.meta.env.VITE_API_URL ||
+//   (window.location.hostname === "localhost"
+//     ? "http://localhost:8000/api/todo"
+//     : "https://todo-list-mern-backend.vercel.app/api/todo");
+
 
 // ✅ GET Todos
 export const fetchTodos = createAsyncThunk("/get", async () => {
