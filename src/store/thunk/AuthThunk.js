@@ -1,6 +1,6 @@
 // src/redux/auth/authThunks.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
+import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -9,7 +9,7 @@ export const signupUser = createAsyncThunk(
   "auth/signupUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const res = await API_URL.post("/user/register", userData);
+      const res = await axios.post(`${API_URL}/user/register`, userData);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Signup failed");
@@ -22,7 +22,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await API_URL.post("/user/login", credentials);
+      const res = await axios.post(`${API_URL}/user/login`, credentials);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Login failed");
