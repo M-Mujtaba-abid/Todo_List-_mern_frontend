@@ -9,7 +9,7 @@ export const signupUser = createAsyncThunk(
   "auth/signupUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const res = await API_URL.post("/auth/register", userData);
+      const res = await API_URL.post("/user/register", userData);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Signup failed");
@@ -22,7 +22,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await API_URL.post("/auth/login", credentials);
+      const res = await API_URL.post("/user/login", credentials);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Login failed");
